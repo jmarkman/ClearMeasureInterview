@@ -21,14 +21,15 @@ namespace DemoApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<string> display;
+        public List<string> FizzBuzzList { get; set; }
 
         public MainWindow()
         {
+            InitializeComponent();
+            DataContext = this;
             FizzBuzzPortable fizzBuzz = new(100);
 
-            display = fizzBuzz.Execute();
-            displayList.ItemsSource = display;
+            FizzBuzzList = new List<string>(fizzBuzz.Execute());
         }
     }
 }

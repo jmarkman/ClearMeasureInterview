@@ -1,13 +1,21 @@
-﻿namespace CountingLibrary
-{
-    public class FizzBuzzPortable
-    {
-        private readonly string firstName = "Jonathan";
-        private readonly string lastName = "Markman";
-        private int upperBound;
+﻿using CountingLibrary.Interfaces;
 
-        public FizzBuzzPortable(int upperBound)
+namespace CountingLibrary
+{
+    public class FizzBuzzPortable : IFizzBuzzPortable
+    {
+        private readonly int upperBound;
+        private readonly IEnumerable<IFizzBuzzModulo> modulos;
+
+        public FizzBuzzPortable(int upperBound, IEnumerable<IFizzBuzzModulo> modulos = null)
         {
+            this.modulos = modulos ?? new List<IFizzBuzzModulo>()
+            {
+                new FizzBuzzModulo("Jonathan", 3),
+                new FizzBuzzModulo("Markman", 5),
+                new FizzBuzzModulo("Jonathan Markman", 3, 5)
+            }.OrderByDescending(x => x.NumberOfModulusOperations);
+
             this.upperBound = upperBound;
         }
 
@@ -15,19 +23,18 @@
         {
             for (int i = 1; i <= upperBound; i++)
             {
-                if (i % 3 == 0 && i % 5 == 0)
+                var moduloTestsDidNotPass = true;
+                foreach (var modulo in modulos)
                 {
-                    yield return $"{firstName} {lastName}";
+                    if (modulo.EvaluateForEvenDivisibility(i, out string output))
+                    {
+                        moduloTestsDidNotPass = false;
+                        yield return output;
+                        break;
+                    }
                 }
-                else if (i % 3 == 0)
-                {
-                    yield return firstName;
-                }
-                else if (i % 5 == 0)
-                {
-                    yield return lastName;
-                }
-                else
+
+                if (moduloTestsDidNotPass)
                 {
                     yield return i.ToString();
                 }
