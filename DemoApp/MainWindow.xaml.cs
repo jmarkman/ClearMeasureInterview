@@ -26,10 +26,7 @@ namespace DemoApp
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
-            FizzBuzzPortable fizzBuzz = new(100);
-
-            FizzBuzzList = new List<string>(fizzBuzz.Execute());
+            DataContext = new DemoViewModel();
         }
     }
 }
