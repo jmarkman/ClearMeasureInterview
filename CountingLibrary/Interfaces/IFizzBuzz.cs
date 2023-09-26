@@ -1,6 +1,6 @@
 ﻿namespace CountingLibrary.Interfaces
 {
-    public interface IFizzBuzzPortable
+    public interface IFizzBuzz
     {
         IEnumerable<string> Execute();
     }

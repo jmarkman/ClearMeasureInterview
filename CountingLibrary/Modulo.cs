@@ -2,22 +2,22 @@
 
 namespace CountingLibrary
 {
-    public class FizzBuzzModulo : IFizzBuzzModulo
+    public class Modulo : IModulo
     {
         private readonly int[] modulus;
         private readonly string output;
 
         public int NumberOfModulusOperations => modulus.Length;
 
-        public FizzBuzzModulo(string output, params int[] modulus)
+        public Modulo(string output, params int[] modulus)
         {
-            this.modulus = modulus ?? throw new ArgumentNullException(nameof(modulus));
+            this.modulus = modulus.Length != 0 ? modulus : throw new ArgumentException("Modulus operator(s) must be supplied.", nameof(modulus));
             this.output = output ?? throw new ArgumentNullException(nameof(output));
         }
 
         /// <summary>
         /// Determines if the input is evenly divisible by the moduli in this instance of
-        /// the <see cref="FizzBuzzModulo"/> class.
+        /// the <see cref="Modulo"/> class.
         /// </summary>
         /// <param name="input"></param>
         /// <param name="output"></param>
