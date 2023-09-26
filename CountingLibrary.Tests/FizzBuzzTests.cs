@@ -1,5 +1,3 @@
-using FluentAssertions;
-
 namespace CountingLibrary.Tests
 {
     public class FizzBuzzTests

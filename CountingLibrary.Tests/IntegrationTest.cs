@@ -1,5 +1,4 @@
 ﻿using CountingLibrary.Interfaces;
-using FluentAssertions;
 
 namespace CountingLibrary.Tests
 {

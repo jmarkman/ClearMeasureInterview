@@ -5,9 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="NoResize">
     <Grid>
-        <ListBox ItemsSource="{Binding FizzBuzzOutput}">
-        </ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width=".7*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="FizzBuzz Output" HorizontalAlignment="Center" Margin="5" FontSize="18" />
+            <ListBox Height="360" Grid.Column="0" Margin="5" ItemsSource="{Binding FizzBuzzOutput}" />
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Example Inputs" HorizontalAlignment="Center" Margin="5" FontSize="18" />
+            
+            <Button Margin="30 10 30 10" Command="{Binding MyNameDemo}">
+                <TextBlock Text="My Name Demo with Upper Bound = 100" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+            <StackPanel Margin="0 0 0 30" HorizontalAlignment="Center">
+                <TextBlock>Mod 3 = Jonathan</TextBlock>
+                <TextBlock>Mod 5 = Markman</TextBlock>
+                <TextBlock>Mod 3 and Mod 5 = Jonathan Markman</TextBlock>
+            </StackPanel>
+            
+            <Button Margin="30 10 30 10" Command="{Binding CompanyNameDemo}">
+                <TextBlock Text="Company Name Demo with Upper Bound = 250" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+            <TextBlock Margin="0 0 0 30" HorizontalAlignment="Center">Mod 5 and Mod 10 and Mod 25 = Clear Measure</TextBlock>
+            
+            <Button Margin="30 10 30 10" Command="{Binding GameNameDemo}">
+                <TextBlock Text="Game Name Demo with Upper Bound = 400" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Button>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock>Mod 17 = Age of Empires</TextBlock>
+                <TextBlock>Mod 22 = Super Mario</TextBlock>
+                <TextBlock>Mod 25 = Street Fighter</TextBlock>
+            </StackPanel>
+        </StackPanel>
+        
     </Grid>
 </Window>

@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace CountingLibrary.Tests
+﻿namespace CountingLibrary.Tests
 {
     public class ModuloTests
     {
